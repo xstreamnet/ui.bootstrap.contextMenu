@@ -186,18 +186,14 @@ angular.module('ui.bootstrap.contextMenu', [])
                 if($event.which == 1) {
                   $event.preventDefault();
                   $scope.$apply(function () {
-                      if (nestedMenu) {
-                          openNestedMenu($event);
-                      } else {
-                          $(event.currentTarget).removeClass('context');
-                          removeContextMenus();
+                        $(event.currentTarget).removeClass('context');
+                        removeContextMenus();
 
-                          if (angular.isFunction(item[1])) {
-                              item[1].call($scope, $scope, event, modelValue, text, $li);
-                          } else {
-                              item.click.call($scope, $scope, event, modelValue, text, $li);
-                          }
-                      }
+                        if (angular.isFunction(item[1])) {
+                            item[1].call($scope, $scope, event, modelValue, text, $li);
+                        } else {
+                            item.click.call($scope, $scope, event, modelValue, text, $li);
+                        }
                   });
                 }
             });
