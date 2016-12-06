@@ -168,10 +168,12 @@ angular.module('ui.bootstrap.contextMenu', [])
                 /// adding the original event in the object to use the attributes of the mouse over event in the promises
                 var ev = {
                     pageX: event.pageX + $ul[0].offsetWidth - 1,
-                    pageY: $ul[0].offsetTop + $li[0].offsetTop - 3,
+                    pageY: $ul[0].offsetTop - $ul[0].scrollTop + $li[0].offsetTop - 3,
                     view: event.view || window,
                     event: $event
                 };
+
+
 
                 /*
                  * At this point, nestedMenu can only either be an Array or a promise.
@@ -224,7 +226,7 @@ angular.module('ui.bootstrap.contextMenu', [])
         if (!$) { var $ = angular.element; }
         $(event.currentTarget).addClass('context');
         var $ul = $('<ul>');
-        $ul.addClass('dropdown-menu');
+        $ul.addClass('dropdown-menu angular-bootstrap-contextmenu');
         $ul.attr({ 'role': 'menu' });
         $ul.css({
             display: 'block',
